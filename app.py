@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import random
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # ==========================================
 # 1. KONFIGURASI HALAMAN
@@ -97,14 +97,15 @@ col_head1, col_head2 = st.columns([5, 1])
 
 with col_head1:
     st.title("Dashboard Monitoring & Locator Konsinyasi")
-    st.caption(f"Last Update: {datetime.now().strftime('%d %b %Y, %H:%M WIB')} | Unit Pengelolaan Gudang PT Semen Padang")
+    # Menghitung UTC + 7 Jam, dan letakkan kembali di dalam kolum ini
+    waktu_wib = datetime.utcnow() + timedelta(hours=7)
+    st.caption(f"Last Update: {waktu_wib.strftime('%d %b %Y, %H:%M WIB')} | Unit Pengelolaan Gudang PT Semen Padang")
 
 with col_head2:
     # Solusi Logo: Menggunakan URL alternatif yang lebih stabil
     st.image("logo_sp.png", width=150)
 
 st.markdown("---")
-
 # ==========================================
 # 5. PEMBAGIAN TAB UX 
 # ==========================================
